@@ -36,7 +36,7 @@ STIX 2.1 Indicator object, enriched with metadata such as severity, entity state
 ### Requirements
 
 - OpenCTI Platform version >= 6.x
-- Doppel API access (URL + API Key)
+- Doppel API access (URL + API Key + User API Key (optionaal))
 
 ## Configuration variables
 
@@ -82,14 +82,14 @@ There are a number of configuration options, which are set either in `docker-com
 2. Build Docker image:
 
 ```bash
-docker build -t opencti/connector-doppel:6.7.4 .
+docker build -t opencti/connector-doppel:rolling .
 ```
 
 3. Register connector in the **main** OpenCTI `docker-compose.yml`:
 
 ```yaml
   connector-doppel:
-    image: doppel-connector:latest
+    image: opencti/connector-doppel:rolling
     environment:
       - OPENCTI_URL=http://opencti:8080
       - OPENCTI_TOKEN=changeme
@@ -100,6 +100,7 @@ docker build -t opencti/connector-doppel:6.7.4 .
       - CONNECTOR_DURATION_PERIOD=PT1H
       - DOPPEL_API_BASE_URL=https://api.doppel.com
       - DOPPEL_API_KEY=changeme
+      - DOPPEL_USER_API_KEY=changeme
       - DOPPEL_ALERTS_ENDPOINT=/v1/alerts
       - DOPPEL_HISTORICAL_POLLING_DAYS=30
       - DOPPEL_MAX_RETRIES=3
