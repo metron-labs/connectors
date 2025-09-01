@@ -36,7 +36,7 @@ STIX 2.1 Indicator object, enriched with metadata such as severity, entity state
 ### Requirements
 
 - OpenCTI Platform version >= 6.x
-- Doppel API access (URL + API Key + User API Key (optionaal))
+- Doppel API access (URL + API Key + User API Key (optional))
 
 ## Configuration variables
 
