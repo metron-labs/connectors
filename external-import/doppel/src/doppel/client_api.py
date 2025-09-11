@@ -11,14 +11,11 @@ class ConnectorClient:
         self.config = config
 
         self.session = requests.Session()
-        headers = {
-            "x-api-key": self.config.api_key,
-            "accept": "application/json"
-        }
+        headers = {"x-api-key": self.config.api_key, "accept": "application/json"}
         # Add user_api_key to headers if provided
-        if hasattr(self.config, 'user_api_key') and self.config.user_api_key:
+        if hasattr(self.config, "user_api_key") and self.config.user_api_key:
             headers["x-user-api-key"] = self.config.user_api_key
-        
+
         self.session.headers.update(headers)
 
     @retry(wait=wait_fixed(5), stop=stop_after_attempt(3))  # Default fallback values
