@@ -155,7 +155,13 @@ class ConnectorConfig(ConfigBaseModel):
         default=timedelta(hours=1),
     )
 
-    log_level: Literal["debug", "info", "warn", "warning", "error",] = Field(
+    log_level: Literal[
+        "debug",
+        "info",
+        "warn",
+        "warning",
+        "error",
+    ] = Field(
         description="The minimum level of logs to display.",
         default="error",
     )

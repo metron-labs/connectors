@@ -701,9 +701,9 @@ class CofenseThreatHQ:
                 current_state["next_position"] = self.next_position
 
             if self.last_run_end_datetime_with_ingested_data:
-                current_state[
-                    "last_run_end_datetime_with_ingested_data"
-                ] = self.last_run_end_datetime_with_ingested_data
+                current_state["last_run_end_datetime_with_ingested_data"] = (
+                    self.last_run_end_datetime_with_ingested_data
+                )
 
             self.helper.set_state(current_state)
             if self.work_id:

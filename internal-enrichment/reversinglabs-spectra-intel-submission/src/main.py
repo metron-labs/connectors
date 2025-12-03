@@ -361,9 +361,9 @@ class ReversingLabsSpectraIntelConnector(InternalEnrichmentConnector):
                 if files["status"] == "MALICIOUS":
                     indicator_name = file["file_name"]
                     indicator_pattern = f"[file:hashes. 'SHA-256' = '{file_sha256}']"
-                    files[
-                        "description"
-                    ] = "Observable is generated from dropped files by ReversingLabs Sandbox"
+                    files["description"] = (
+                        "Observable is generated from dropped files by ReversingLabs Sandbox"
+                    )
                     files["labels"] = []
                     files["labels"].append(
                         file_reputation_report["rl"]["malware_presence"][
@@ -729,9 +729,9 @@ class ReversingLabsSpectraIntelConnector(InternalEnrichmentConnector):
         results["analysis_duration"] = self.analysis_result["rl"]["report"][
             "analysis_duration"
         ]
-        results[
-            "description"
-        ] = "Created from report received by ReversingLabs Spectra Sandbox"
+        results["description"] = (
+            "Created from report received by ReversingLabs Spectra Sandbox"
+        )
         results["threat_names"] = self.analysis_result["rl"]["report"]["threat_names"]
         results["signatures"] = self.analysis_result["rl"]["report"]["signatures"]
         results["labels"] = []

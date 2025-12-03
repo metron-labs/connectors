@@ -155,8 +155,7 @@ class _SettingsLoader(BaseSettings):
                 where all fields accept raw, unvalidated input.
         """
 
-        class SettingsLoader(_SettingsLoader):
-            ...
+        class SettingsLoader(_SettingsLoader): ...
 
         model_fields = deepcopy(connector_settings.model_fields)
         for field_info in model_fields.values():

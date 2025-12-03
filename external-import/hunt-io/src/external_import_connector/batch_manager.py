@@ -185,7 +185,7 @@ class BundleSender:
                     self._is_retryable_error(e)
                     and attempt < RetryConfig.MAX_RETRIES - 1
                 ):
-                    delay = RetryConfig.EXPONENTIAL_BASE ** attempt
+                    delay = RetryConfig.EXPONENTIAL_BASE**attempt
                     self.helper.connector_logger.warning(
                         f"Bundle sending failed (attempt {attempt + 1}/{RetryConfig.MAX_RETRIES}), "
                         f"retrying in {delay}s: {e}"

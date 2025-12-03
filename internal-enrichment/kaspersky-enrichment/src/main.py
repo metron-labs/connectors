@@ -4,8 +4,7 @@ from connector import ConnectorSettings, KasperskyConnector
 from pycti import OpenCTIConnectorHelper
 
 
-class ConfigLoader(ConnectorSettings):
-    ...
+class ConfigLoader(ConnectorSettings): ...
 
 
 if __name__ == "__main__":

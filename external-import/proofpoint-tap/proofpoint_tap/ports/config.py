@@ -55,8 +55,7 @@ class ConfigLoaderOCTIPort(ConfigBaseLoader):
 
     @property
     @abstractmethod
-    def _url(self) -> str:
-        ...
+    def _url(self) -> str: ...
 
     @property
     @_make_error_handler("Unable to retrieve OpenCTI URL in config")
@@ -66,8 +65,7 @@ class ConfigLoaderOCTIPort(ConfigBaseLoader):
 
     @property
     @abstractmethod
-    def _token(self) -> str:
-        ...
+    def _token(self) -> str: ...
 
     @property
     @_make_error_handler("Unable to retrieve OpenCTI Token in config")
@@ -81,8 +79,7 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _id(self) -> str:
-        ...
+    def _id(self) -> str: ...
 
     @property
     @_make_error_handler("Unable to retrieve connector ID in config")
@@ -106,8 +103,7 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _name(self) -> str:
-        ...
+    def _name(self) -> str: ...
 
     @property
     @_make_error_handler("Unable to retrieve connector name in config")
@@ -117,8 +113,7 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _scope(self) -> str:
-        ...
+    def _scope(self) -> str: ...
 
     @property
     @_make_error_handler("Unable to retrieve connector scope in config")
@@ -128,8 +123,7 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _log_level(self) -> Literal["debug", "info", "warn", "error"]:
-        ...
+    def _log_level(self) -> Literal["debug", "info", "warn", "error"]: ...
 
     @property
     @_make_error_handler("Unable to retrieve connector log level in config")
@@ -143,8 +137,7 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _duration_period(self) -> "datetime.timedelta":
-        ...
+    def _duration_period(self) -> "datetime.timedelta": ...
 
     @property
     @_make_error_handler("Unable to retrieve connector duration period in config")
@@ -154,8 +147,7 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _queue_threshold(self) -> Optional[int]:
-        ...
+    def _queue_threshold(self) -> Optional[int]: ...
 
     @property
     @_make_error_handler("Unable to retrieve connector queue threshold in config")
@@ -165,8 +157,7 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _run_and_terminate(self) -> Optional[bool]:
-        ...
+    def _run_and_terminate(self) -> Optional[bool]: ...
 
     @property
     @_make_error_handler(
@@ -178,8 +169,7 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _send_to_queue(self) -> Optional[bool]:
-        ...
+    def _send_to_queue(self) -> Optional[bool]: ...
 
     @property
     @_make_error_handler("Unable to retrieve connector send-to-queue flag in config")
@@ -189,8 +179,7 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _send_to_directory(self) -> Optional[bool]:
-        ...
+    def _send_to_directory(self) -> Optional[bool]: ...
 
     @property
     @_make_error_handler(
@@ -202,8 +191,7 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _send_to_directory_path(self) -> Optional[str]:
-        ...
+    def _send_to_directory_path(self) -> Optional[str]: ...
 
     @property
     @_make_error_handler(
@@ -219,8 +207,7 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _send_to_directory_retention(self) -> Optional[int]:
-        ...
+    def _send_to_directory_retention(self) -> Optional[int]: ...
 
     @property
     @_make_error_handler(
@@ -240,8 +227,7 @@ class ConfigLoaderTAPPort(ABC):
 
     @property
     @abstractmethod
-    def _api_base_url(self) -> str:
-        ...
+    def _api_base_url(self) -> str: ...
 
     @property
     @_make_error_handler("Unable to retrieve API base URL in config")
@@ -251,8 +237,7 @@ class ConfigLoaderTAPPort(ABC):
 
     @property
     @abstractmethod
-    def _api_principal_key(self) -> str:
-        ...
+    def _api_principal_key(self) -> str: ...
 
     @property
     @_make_error_handler("Unable to retrieve API principal key in config")
@@ -262,8 +247,7 @@ class ConfigLoaderTAPPort(ABC):
 
     @property
     @abstractmethod
-    def _api_secret_key(self) -> str:
-        ...
+    def _api_secret_key(self) -> str: ...
 
     @property
     @_make_error_handler("Unable to retrieve API secret key in config")
@@ -273,8 +257,7 @@ class ConfigLoaderTAPPort(ABC):
 
     @property
     @abstractmethod
-    def _api_timeout(self) -> Optional[datetime.timedelta]:
-        ...
+    def _api_timeout(self) -> Optional[datetime.timedelta]: ...
 
     @property
     @_make_error_handler("Unable to retrieve API timeout in config")
@@ -288,8 +271,7 @@ class ConfigLoaderTAPPort(ABC):
 
     @property
     @abstractmethod
-    def _api_backoff(self) -> Optional["datetime.timedelta"]:
-        ...
+    def _api_backoff(self) -> Optional["datetime.timedelta"]: ...
 
     @property
     @_make_error_handler("Unable to retrieve API backoff duration in config")
@@ -303,8 +285,7 @@ class ConfigLoaderTAPPort(ABC):
 
     @property
     @abstractmethod
-    def _api_retries(self) -> Optional[int]:
-        ...
+    def _api_retries(self) -> Optional[int]: ...
 
     @property
     @_make_error_handler("Unable to retrieve API retry count in config")
@@ -316,8 +297,7 @@ class ConfigLoaderTAPPort(ABC):
     @abstractmethod
     def _marking_definition(
         self,
-    ) -> str:
-        ...
+    ) -> str: ...
 
     @property
     @_make_error_handler("Unable to retrieve marking definition in config")
@@ -354,8 +334,7 @@ class ConfigLoaderTAPPort(ABC):
 
     @property
     @abstractmethod
-    def _export_campaigns(self) -> bool:
-        ...
+    def _export_campaigns(self) -> bool: ...
 
     @property
     @_make_error_handler("Unable to retrieve export campaigns in config")
@@ -369,8 +348,7 @@ class ConfigLoaderTAPPort(ABC):
 
     @property
     @abstractmethod
-    def _export_events(self) -> bool:
-        ...
+    def _export_events(self) -> bool: ...
 
     @property
     @_make_error_handler("Unable to retrieve export events in config")
@@ -393,8 +371,7 @@ class ConfigLoaderTAPPort(ABC):
             "clicks_blocked",
             "clicks_permitted",
         ]
-    ]:
-        ...
+    ]: ...
 
     @property
     @_make_error_handler("Unable to retrieve events type in config")

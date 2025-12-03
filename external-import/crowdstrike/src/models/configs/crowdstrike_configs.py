@@ -71,7 +71,12 @@ class _ConfigLoaderCrowdstrike(ConfigBaseSettings):
         default_factory=_get_default_timestamp_30_days_ago,
         description="Unix timestamp from which to start importing reports. Default is 30 days ago. BEWARE: 0 means ALL reports!",
     )
-    report_status: Literal["New", "In Progress", "Analyzed", "Closed",] = Field(
+    report_status: Literal[
+        "New",
+        "In Progress",
+        "Analyzed",
+        "Closed",
+    ] = Field(
         default="New",
         description="Report status filter.",
     )

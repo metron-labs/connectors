@@ -1141,9 +1141,9 @@ class MispImportFile:
                             )
                         elif OPENCTISTIX2[observable_resolver]["path"][0] == "hashes":
                             hashes = {}
-                            hashes[
-                                OPENCTISTIX2[observable_resolver]["path"][1]
-                            ] = observable_value
+                            hashes[OPENCTISTIX2[observable_resolver]["path"][1]] = (
+                                observable_value
+                            )
                             observable = stix2.File(
                                 name=file_name,
                                 hashes=hashes,

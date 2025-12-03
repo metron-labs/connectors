@@ -12,9 +12,7 @@ from stix2 import (
 from zerofox.domain.phishing import FoxPhishing
 
 
-def phishing_to_infrastructure(
-    created_by, now: str, entry: FoxPhishing
-) -> List[
+def phishing_to_infrastructure(created_by, now: str, entry: FoxPhishing) -> List[
     Union[
         Infrastructure,
         Relationship,

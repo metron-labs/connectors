@@ -268,13 +268,13 @@ class RSTIocLookupConnector:
             if self.update_description_action == "overwrite":
                 obj["description"] = self.format_description(resp)
             elif self.update_description_action == "append":
-                obj[
-                    "description"
-                ] = f'{obj["description"]}\n\n{self.format_description(resp)}'
+                obj["description"] = (
+                    f'{obj["description"]}\n\n{self.format_description(resp)}'
+                )
             elif self.update_description_action == "prepend":
-                obj[
-                    "description"
-                ] = f'{self.format_description(resp)}\n\n{obj["description"]}'
+                obj["description"] = (
+                    f'{self.format_description(resp)}\n\n{obj["description"]}'
+                )
             else:
                 raise ValueError("Unsupported description update action")
 
@@ -314,13 +314,13 @@ class RSTIocLookupConnector:
             if self.update_description_action == "overwrite":
                 obj["description"] = self.format_description(resp)
             elif self.update_description_action == "append":
-                obj[
-                    "description"
-                ] = f'{obj["description"]}\n\n{self.format_description(resp)}'
+                obj["description"] = (
+                    f'{obj["description"]}\n\n{self.format_description(resp)}'
+                )
             elif self.update_description_action == "prepend":
-                obj[
-                    "description"
-                ] = f'{self.format_description(resp)}\n\n{obj["description"]}'
+                obj["description"] = (
+                    f'{self.format_description(resp)}\n\n{obj["description"]}'
+                )
             else:
                 raise ValueError("Unsupported description update action")
 

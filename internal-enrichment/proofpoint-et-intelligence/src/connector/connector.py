@@ -498,9 +498,9 @@ class ProofpointEtIntelligenceConnector:
                             validated_item = task_parameter_model.model_validate(
                                 validated_model.payload
                             )
-                            valided_intelligence[
-                                task_name
-                            ] = validated_item.model_dump()
+                            valided_intelligence[task_name] = (
+                                validated_item.model_dump()
+                            )
                         except ValidationError as err:
                             self.helper.connector_logger.warning(
                                 "[VALIDATION] A validation error has been encountered, this validation will be skipped.",

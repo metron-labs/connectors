@@ -478,9 +478,9 @@ class DataToSTIXAdapter:
                 mitre_matrix[_e.get("attack_pattern")]["kill_chain_phases"].append(
                     _e.get("kill_chain_phase")
                 )
-                mitre_matrix[_e.get("attack_pattern")][
-                    "portal_links"
-                ] = self._retrieve_link(_e)
+                mitre_matrix[_e.get("attack_pattern")]["portal_links"] = (
+                    self._retrieve_link(_e)
+                )
         self.helper.connector_logger.debug(
             f"MITRE matrix generated with {len(mitre_matrix)} attack patterns"
         )

@@ -26,9 +26,9 @@ class ExportFileCsv:
             False,
             ";",
         )
-        self.errors: list[
-            Exception
-        ] = []  # error holder to be reset before each new process
+        self.errors: list[Exception] = (
+            []
+        )  # error holder to be reset before each new process
 
     def export_dict_list_to_csv(self, data):
         output = io.StringIO()

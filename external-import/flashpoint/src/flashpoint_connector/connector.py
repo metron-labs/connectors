@@ -234,9 +234,9 @@ class FlashpointConnector:
                             current_state["misp_last_event"] = datetime.fromtimestamp(
                                 last_event_timestamp, tz=timezone.utc
                             ).isoformat()
-                            current_state[
-                                "misp_last_event_timestamp"
-                            ] = last_event_timestamp
+                            current_state["misp_last_event_timestamp"] = (
+                                last_event_timestamp
+                            )
                             self.helper.set_state(current_state)
                         self.helper.log_info(message)
             except Exception as e:

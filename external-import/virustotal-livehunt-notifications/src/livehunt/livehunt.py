@@ -293,9 +293,9 @@ class VirustotalLivehuntNotifications:
                     self.builder.process(last_run, timestamp)
 
                     # Set the new state
-                    new_state[
-                        self._STATE_LATEST_RUN_TIMESTAMP
-                    ] = self._current_unix_timestamp()
+                    new_state[self._STATE_LATEST_RUN_TIMESTAMP] = (
+                        self._current_unix_timestamp()
+                    )
                     self.helper.connector_logger.info(
                         f"[Virustotal Livehunt Notifications] Storing new state: {new_state}"
                     )

@@ -109,13 +109,13 @@ class _ConnectorConfig(_BaseModel):
                     "Cannot set both run_every and duration_period... Using duration_period."
                 )
             elif run_every[-1] in ["H", "M", "S"]:
-                data[
-                    "duration_period"
-                ] = f"PT{int(float(run_every[:-1]))}{run_every[-1]}"
+                data["duration_period"] = (
+                    f"PT{int(float(run_every[:-1]))}{run_every[-1]}"
+                )
             else:
-                data[
-                    "duration_period"
-                ] = f"P{int(float(run_every[:-1]))}{run_every[-1]}"
+                data["duration_period"] = (
+                    f"P{int(float(run_every[:-1]))}{run_every[-1]}"
+                )
         return data
 
 

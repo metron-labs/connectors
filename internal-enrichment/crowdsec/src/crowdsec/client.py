@@ -47,4 +47,4 @@ class CrowdSecClient:
                 self.helper.log_warning(
                     f"CrowdSec CTI returned {resp.status_code} response status code. Retrying.."
                 )
-            sleep(2 ** i)
+            sleep(2**i)

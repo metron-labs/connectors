@@ -559,9 +559,9 @@ class ConnectorLuminar:
                             )
                         if labels:
                             custom_prop["x_opencti_labels"] = labels
-                        custom_prop[
-                            "x_opencti_description"
-                        ] = "Luminar Leaked Credentials"
+                        custom_prop["x_opencti_description"] = (
+                            "Luminar Leaked Credentials"
+                        )
                         user_stix_obj = UserAccount(
                             **c,
                             custom_properties=custom_prop,

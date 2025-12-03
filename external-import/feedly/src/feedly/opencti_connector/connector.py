@@ -60,9 +60,9 @@ def _add_main_observable_type_to_indicators(bundle: dict) -> None:
         if o["type"] == "indicator" and "pattern" in o:
             pattern = o["pattern"]
             stix_type = pattern.removeprefix("[").split(":")[0].strip()
-            o[
-                "x_opencti_main_observable_type"
-            ] = OpenCTIStix2Utils.stix_observable_opencti_type(stix_type)
+            o["x_opencti_main_observable_type"] = (
+                OpenCTIStix2Utils.stix_observable_opencti_type(stix_type)
+            )
 
 
 def _transform_threat_actors_to_intrusion_sets(bundle: dict) -> None:

@@ -142,9 +142,9 @@ class OpenCTISTIXFormatter:
         obj["x_opencti_cvss_availability_impact"] = cvss_vector.get_value_description(
             "A"
         )
-        obj[
-            "x_opencti_cvss_confidentiality_impact"
-        ] = cvss_vector.get_value_description("C")
+        obj["x_opencti_cvss_confidentiality_impact"] = (
+            cvss_vector.get_value_description("C")
+        )
         obj["x_opencti_epss_score"] = None
         obj["x_opencti_epss_percentile"] = None
 

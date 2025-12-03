@@ -197,9 +197,9 @@ def create_indicator(
     custom_properties: Dict[str, Any] = {}
 
     if x_opencti_main_observable_type is not None:
-        custom_properties[
-            X_OPENCTI_MAIN_OBSERVABLE_TYPE
-        ] = x_opencti_main_observable_type
+        custom_properties[X_OPENCTI_MAIN_OBSERVABLE_TYPE] = (
+            x_opencti_main_observable_type
+        )
     custom_properties[X_OPENCTI_SCORE] = x_opencti_score
 
     return stix2.Indicator(

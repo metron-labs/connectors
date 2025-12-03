@@ -21,9 +21,9 @@ class _ConnectorConfig(ConnectorConfig):
 
 
 class _EmailIntelMicrosoftConfig(BaseModel):
-    tlp_level: Literal[
-        "white", "clear", "green", "amber", "amber+strict", "red"
-    ] = Field(default="amber+strict")
+    tlp_level: Literal["white", "clear", "green", "amber", "amber+strict", "red"] = (
+        Field(default="amber+strict")
+    )
     relative_import_start_date: datetime.timedelta = Field(
         default=datetime.timedelta(days=30)
     )

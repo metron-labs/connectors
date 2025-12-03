@@ -549,17 +549,17 @@ class RansomwareAPIConnector:
                     current_state["last_run"] = now.isoformat(timespec="seconds")
 
                     if self.last_run_datetime_with_ingested_data:
-                        current_state[
-                            "last_run_datetime_with_ingested_data"
-                        ] = self.last_run_datetime_with_ingested_data
+                        current_state["last_run_datetime_with_ingested_data"] = (
+                            self.last_run_datetime_with_ingested_data
+                        )
 
                     self.helper.set_state(current_state)
                 else:
                     state = {"last_run": now.isoformat(timespec="seconds")}
                     if self.last_run_datetime_with_ingested_data:
-                        state[
-                            "last_run_datetime_with_ingested_data"
-                        ] = self.last_run_datetime_with_ingested_data
+                        state["last_run_datetime_with_ingested_data"] = (
+                            self.last_run_datetime_with_ingested_data
+                        )
                     self.helper.set_state(state)
 
             except RansomwareAPIError as e:

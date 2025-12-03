@@ -165,7 +165,15 @@ class ConnectorConfig(ConfigBaseModel):
         description="The period of time to await between two runs of the connector.",
         default=timedelta(hours=24),
     )
-    log_level: Optional[Literal["debug", "info", "warn", "warning", "error",]] = Field(
+    log_level: Optional[
+        Literal[
+            "debug",
+            "info",
+            "warn",
+            "warning",
+            "error",
+        ]
+    ] = Field(
         description="The minimum level of logs to display.",
         default="error",
     )

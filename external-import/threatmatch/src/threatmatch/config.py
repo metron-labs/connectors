@@ -109,9 +109,9 @@ class _Threatmatch(_BaseSettings):
     import_profiles: bool = Field(default=True)
     import_alerts: bool = Field(default=True)
     import_iocs: bool = Field(default=True)
-    tlp_level: Literal[
-        "white", "clear", "green", "amber", "amber+strict", "red"
-    ] = Field(default="amber")
+    tlp_level: Literal["white", "clear", "green", "amber", "amber+strict", "red"] = (
+        Field(default="amber")
+    )
     threat_actor_as_intrusion_set: bool = Field(default=True)
 
 

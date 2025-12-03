@@ -26,7 +26,9 @@ from stix2 import (
     IPv4Address,
 )
 from stix2 import MarkingDefinition as Stix2MarkingDefinition
-from stix2 import Note
+from stix2 import (
+    Note,
+)
 from stix2 import Relationship as StixCoreRelationship
 
 
@@ -448,9 +450,11 @@ class ConverterToStix:
             object_refs=object_refs,
             spec_version=STIX_VERSION,
             created_by_ref=self.author.id,
-            external_references=build_external_references(alert)
-            if build_external_references(alert)
-            else None,
+            external_references=(
+                build_external_references(alert)
+                if build_external_references(alert)
+                else None
+            ),
             description=build_description(alert),
             labels=case_labels or None,
             object_marking_refs=[self.tlp_marking.id],

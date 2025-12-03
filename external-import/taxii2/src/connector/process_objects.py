@@ -298,9 +298,9 @@ class ProcessObjects:
         """
         for obj in stix_objects:
             if obj["type"] == "report":
-                obj[
-                    "x_opencti_workflow_id"
-                ] = self.config.change_report_status_x_opencti_workflow_id
+                obj["x_opencti_workflow_id"] = (
+                    self.config.change_report_status_x_opencti_workflow_id
+                )
         return stix_objects
 
     def objects(self, stix_objects: list) -> list:
