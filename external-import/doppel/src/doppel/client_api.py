@@ -2,7 +2,15 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any
 
 import requests
-from tenacity import retry, stop_after_attempt, wait_fixed
+from tenacity import (
+    retry,
+    retry_if_exception,
+    stop_after_attempt,
+    wait_exponential_jitter,
+    wait_fixed,
+)
+
+from doppel.constants import RETRYABLE_REQUEST_ERRORS
 
 
 class ConnectorClient:
@@ -14,11 +22,31 @@ class ConnectorClient:
         self.config = config
 
         self.session = requests.Session()
-        self.session.headers.update(
-            {"x-api-key": self.config.api_key, "accept": "application/json"}
-        )
+        headers = {"x-api-key": self.config.api_key, "accept": "application/json"}
+        # Add user_api_key if provided
+        if self.config.user_api_key:
+            headers["x-user-api-key"] = self.config.user_api_key
+        if self.config.organization_code:
+            headers["x-organization-code"] = self.config.organization_code
 
-    @retry(wait=wait_fixed(5), stop=stop_after_attempt(3))  # Default fallback values
+        self.session.headers.update(headers)
+
+    @staticmethod
+    def is_retryable_exception(exception):
+        if isinstance(exception, requests.HTTPError):
+            if exception.response.status_code in (429, 500, 502, 503, 504):
+                return True
+
+        if isinstance(exception, RETRYABLE_REQUEST_ERRORS):
+            return True
+        return False
+
+    @retry(
+        retry=retry_if_exception(is_retryable_exception),
+        wait=wait_exponential_jitter(initial=10, max=60, jitter=1),
+        stop=stop_after_attempt(5),
+        reraise=True,
+    )
     def _request_data(self, api_url: str, params=None):
         """
         Internal method to handle API requests
@@ -32,6 +60,12 @@ class ConnectorClient:
             if http_err.response.status_code == 504:
                 self.helper.connector_logger.warning(
                     "[API] Gateway Timeout, retrying...",
+                    {"url": api_url, "params": params},
+                )
+                raise
+            elif http_err.response.status_code == 429:
+                self.helper.connector_logger.warning(
+                    "[API] Rate limited (429), retrying with backoff...",
                     {"url": api_url, "params": params},
                 )
                 raise

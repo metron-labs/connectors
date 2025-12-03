@@ -84,6 +84,16 @@ class ConfigDoppel:
             "DOPPEL_API_KEY", ["doppel", "api_key"], self.load
         )
 
+        self.user_api_key = get_config_variable(
+            "DOPPEL_USER_API_KEY", ["doppel", "user_api_key"], self.load
+        )
+
+        self.organization_code = get_config_variable(
+            "DOPPEL_ORGANIZATION_CODE",
+            ["doppel", "organization_code"],
+            self.load,
+        )
+
         self.alerts_endpoint = get_config_variable(
             "DOPPEL_ALERTS_ENDPOINT",
             ["doppel", "alerts_endpoint"],
