@@ -7,9 +7,7 @@ from pycti import OpenCTIConnectorHelper
 
 from .api_handler import DefenderApiHandler
 from .config_variables import ConfigConnector
-from .utils import (
-    FILE_HASH_TYPES_MAPPER,
-)
+from .utils import FILE_HASH_TYPES_MAPPER
 
 
 def chunker_list(a, n):
@@ -281,9 +279,9 @@ class MicrosoftDefenderIntelSynchronizerConnector:
                                 first_indicator = json.loads(
                                     opencti_indicators[0]["toStix"]
                                 )
-                                state[collection]["last_timestamp"] = (
-                                    first_indicator.get("modified")
-                                )
+                                state[collection][
+                                    "last_timestamp"
+                                ] = first_indicator.get("modified")
                             except Exception as e:
                                 self.helper.connector_logger.warning(
                                     f"[STATE] Could not extract timestamp from first indicator: {e}"

@@ -133,11 +133,11 @@ class _ConfigLoaderPlaybookAlert(ConfigBaseSettings):
         default=False,
         description="Whether to enable fetching Recorded Future playbook alerts.",
     )
-    severity_threshold_domain_abuse: Literal["Informational", "Moderate", "High"] = (
-        Field(
-            default="Informational",
-            description="Minimum severity threshold for domain abuse playbook alerts.",
-        )
+    severity_threshold_domain_abuse: Literal[
+        "Informational", "Moderate", "High"
+    ] = Field(
+        default="Informational",
+        description="Minimum severity threshold for domain abuse playbook alerts.",
     )
     severity_threshold_identity_novel_exposures: Literal[
         "Informational", "Moderate", "High"

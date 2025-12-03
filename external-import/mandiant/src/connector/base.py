@@ -95,74 +95,74 @@ class Mandiant:
         self.mandiant_report_types = {}
 
         if self.config.mandiant.actor_profile_report:
-            self.mandiant_report_types["Actor Profile"] = (
-                self.config.mandiant.actor_profile_report_type
-            )
+            self.mandiant_report_types[
+                "Actor Profile"
+            ] = self.config.mandiant.actor_profile_report_type
 
         if self.config.mandiant.country_profile_report:
-            self.mandiant_report_types["Country Profile"] = (
-                self.config.mandiant.country_profile_report_type
-            )
+            self.mandiant_report_types[
+                "Country Profile"
+            ] = self.config.mandiant.country_profile_report_type
 
         if self.config.mandiant.event_coverage_implication_report:
-            self.mandiant_report_types["Event Coverage/Implication"] = (
-                self.config.mandiant.event_coverage_implication_report_type
-            )
+            self.mandiant_report_types[
+                "Event Coverage/Implication"
+            ] = self.config.mandiant.event_coverage_implication_report_type
 
         if self.config.mandiant.executive_perspective_report:
-            self.mandiant_report_types["Executive Perspective"] = (
-                self.config.mandiant.executive_perspective_report_type
-            )
+            self.mandiant_report_types[
+                "Executive Perspective"
+            ] = self.config.mandiant.executive_perspective_report_type
 
         if self.config.mandiant.ics_security_roundup_report:
-            self.mandiant_report_types["ICS Security Roundup"] = (
-                self.config.mandiant.ics_security_roundup_report_type
-            )
+            self.mandiant_report_types[
+                "ICS Security Roundup"
+            ] = self.config.mandiant.ics_security_roundup_report_type
 
         if self.config.mandiant.industry_reporting_report:
-            self.mandiant_report_types["Industry Reporting"] = (
-                self.config.mandiant.industry_reporting_report_type
-            )
+            self.mandiant_report_types[
+                "Industry Reporting"
+            ] = self.config.mandiant.industry_reporting_report_type
 
         if self.config.mandiant.malware_profile_report:
-            self.mandiant_report_types["Malware Profile"] = (
-                self.config.mandiant.malware_profile_report_type
-            )
+            self.mandiant_report_types[
+                "Malware Profile"
+            ] = self.config.mandiant.malware_profile_report_type
 
         if self.config.mandiant.network_activity_report:
-            self.mandiant_report_types["Network Activity Reports"] = (
-                self.config.mandiant.network_activity_report_type
-            )
+            self.mandiant_report_types[
+                "Network Activity Reports"
+            ] = self.config.mandiant.network_activity_report_type
 
         if self.config.mandiant.patch_report:
-            self.mandiant_report_types["Patch Report"] = (
-                self.config.mandiant.patch_report_type
-            )
+            self.mandiant_report_types[
+                "Patch Report"
+            ] = self.config.mandiant.patch_report_type
 
         if self.config.mandiant.ttp_deep_dive_report:
-            self.mandiant_report_types["TTP Deep Dive"] = (
-                self.config.mandiant.ttp_deep_dive_report_type
-            )
+            self.mandiant_report_types[
+                "TTP Deep Dive"
+            ] = self.config.mandiant.ttp_deep_dive_report_type
 
         if self.config.mandiant.threat_activity_alert_report:
-            self.mandiant_report_types["Threat Activity Alert"] = (
-                self.config.mandiant.threat_activity_alert_report_type
-            )
+            self.mandiant_report_types[
+                "Threat Activity Alert"
+            ] = self.config.mandiant.threat_activity_alert_report_type
 
         if self.config.mandiant.threat_activity_report:
-            self.mandiant_report_types["Threat Activity Report"] = (
-                self.config.mandiant.threat_activity_report_type
-            )
+            self.mandiant_report_types[
+                "Threat Activity Report"
+            ] = self.config.mandiant.threat_activity_report_type
 
         if self.config.mandiant.trends_and_forecasting_report:
-            self.mandiant_report_types["Trends and Forecasting"] = (
-                self.config.mandiant.trends_and_forecasting_report_type
-            )
+            self.mandiant_report_types[
+                "Trends and Forecasting"
+            ] = self.config.mandiant.trends_and_forecasting_report_type
 
         if self.config.mandiant.vulnerability_report:
-            self.mandiant_report_types["Vulnerability Report"] = (
-                self.config.mandiant.vulnerability_report_type
-            )
+            self.mandiant_report_types[
+                "Vulnerability Report"
+            ] = self.config.mandiant.vulnerability_report_type
 
         self.mandiant_import_software_cpe = (
             self.config.mandiant.vulnerability_import_software_cpe
@@ -173,14 +173,14 @@ class Mandiant:
 
         if self.config.mandiant.weekly_vulnerability_exploitation_report:
 
-            self.mandiant_report_types["Weekly Vulnerability Exploitation Report"] = (
-                self.config.mandiant.weekly_vulnerability_exploitation_report_type
-            )
+            self.mandiant_report_types[
+                "Weekly Vulnerability Exploitation Report"
+            ] = self.config.mandiant.weekly_vulnerability_exploitation_report_type
 
         if self.config.mandiant.news_analysis_report:
-            self.mandiant_report_types["News Analysis"] = (
-                self.config.mandiant.news_analysis_report_type
-            )
+            self.mandiant_report_types[
+                "News Analysis"
+            ] = self.config.mandiant.news_analysis_report_type
 
         self.guess_relationships_reports = (
             self.config.mandiant.guess_relationships_reports

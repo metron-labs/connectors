@@ -77,9 +77,9 @@ def test_config_loader_with_valid_yaml_file():
         config_loader = ConfigLoader()
         config_loader_dump = config_loader.model_dump_pycti()
         # Re-serialize to reduce precision as in config_dict
-        config_loader_dump["flashpoint"]["import_start_date"] = (
-            config_loader.flashpoint.import_start_date.isoformat(timespec="minutes")
-        )
+        config_loader_dump["flashpoint"][
+            "import_start_date"
+        ] = config_loader.flashpoint.import_start_date.isoformat(timespec="minutes")
         config_loader_dump["flashpoint"][
             "api_key"
         ] = config_loader.flashpoint.api_key.get_secret_value()
@@ -97,9 +97,9 @@ def test_config_loader_with_valid_environment_variables():
         config_loader = ConfigLoader()
         config_loader_dump = config_loader.model_dump_pycti()
         # Re-serialize to reduce precision as in config_dict
-        config_loader_dump["flashpoint"]["import_start_date"] = (
-            config_loader.flashpoint.import_start_date.isoformat(timespec="minutes")
-        )
+        config_loader_dump["flashpoint"][
+            "import_start_date"
+        ] = config_loader.flashpoint.import_start_date.isoformat(timespec="minutes")
         config_loader_dump["flashpoint"][
             "api_key"
         ] = config_loader.flashpoint.api_key.get_secret_value()

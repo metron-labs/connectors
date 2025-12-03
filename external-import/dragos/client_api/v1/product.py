@@ -227,9 +227,9 @@ class ProductClientAPIV1(BaseClientAPIV1):
                 _self.current_page = 0
                 _self.items: list[ProductResponse] = []  # page cache
                 _self.index_in_items = 0
-                _self.total_pages: Optional[int] = (
-                    None  # will be updated after 1st call
-                )
+                _self.total_pages: Optional[
+                    int
+                ] = None  # will be updated after 1st call
 
             def __aiter__(_self) -> "_AsyncIterator":  # noqa: N805
                 return _self
@@ -425,9 +425,9 @@ class ProductClientAPIV1(BaseClientAPIV1):
                 _self.current_page = 0
                 _self.items: list[ProductResponse] = []  # page cache
                 _self.index_in_items = 0
-                _self.total_pages: Optional[int] = (
-                    None  # will be updated after 1st call
-                )
+                _self.total_pages: Optional[
+                    int
+                ] = None  # will be updated after 1st call
 
             def __iter__(_self) -> "_SyncIterator":  # noqa: N805
                 return _self

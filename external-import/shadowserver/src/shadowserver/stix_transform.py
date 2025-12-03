@@ -291,15 +291,15 @@ class ShadowserverStixTransformation:
         :return: Dictionary containing custom properties for the report.
         """
         custom_properties = copy.deepcopy(self.custom_properties)
-        custom_properties["x_opencti_description"] = (
-            f"Shadowserver Report Type ({self.type}) Report ID ({self.report.get('id')})"
-        )
+        custom_properties[
+            "x_opencti_description"
+        ] = f"Shadowserver Report Type ({self.type}) Report ID ({self.report.get('id')})"
         custom_properties["x_opencti_additional_names"] = [
             self.report.get("file", "default_file_name.csv")
         ]
-        custom_properties["x_opencti_score"] = (
-            0  # Set score to 0 due to trusted source.
-        )
+        custom_properties[
+            "x_opencti_score"
+        ] = 0  # Set score to 0 due to trusted source.
         return custom_properties
 
     def create_stix_report(self, labels):

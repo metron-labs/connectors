@@ -101,9 +101,9 @@ class CampaignMember(ResponseModel):
         description="Datetime the threat variant was first recognized as malicious",
         alias="threatTime",
     )
-    threat_status: PermissiveLiteral[Literal["active", "cleared", "falsePositive"]] = (
-        Field(..., description="Status of the threat.", alias="threatStatus")
-    )
+    threat_status: PermissiveLiteral[
+        Literal["active", "cleared", "falsePositive"]
+    ] = Field(..., description="Status of the threat.", alias="threatStatus")
 
 
 class CampaignDetailsResponse(ResponseModel):

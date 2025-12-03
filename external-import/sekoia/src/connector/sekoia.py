@@ -182,9 +182,10 @@ class SekoiaConnector(object):
 
         if self.import_ioc_relationships:
             # Retrieve all related object to IOC and relationship
-            [all_related_objects, all_relationships] = (
-                self._retrieve_related_objects_and_relationships(items)
-            )
+            [
+                all_related_objects,
+                all_relationships,
+            ] = self._retrieve_related_objects_and_relationships(items)
 
             if self.import_source_list:
                 all_related_objects = self._add_sources_to_items(all_related_objects)
@@ -293,9 +294,9 @@ class SekoiaConnector(object):
                 and len(item.get("x_ic_observable_types")) > 0
             ):
                 stix_type = item.get("x_ic_observable_types")[0]
-                item["x_opencti_main_observable_type"] = (
-                    OpenCTIStix2Utils.stix_observable_opencti_type(stix_type)
-                )
+                item[
+                    "x_opencti_main_observable_type"
+                ] = OpenCTIStix2Utils.stix_observable_opencti_type(stix_type)
                 if item.get("revoked") is not None and item.get("revoked") is True:
                     item["valid_until"] = item.get("modified")
 

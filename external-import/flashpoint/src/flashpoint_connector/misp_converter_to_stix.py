@@ -1084,9 +1084,9 @@ class MISPConverterToStix:
                             )
                         elif OPENCTI_STIX2[observable_resolver]["path"][0] == "hashes":
                             hashes = {}
-                            hashes[OPENCTI_STIX2[observable_resolver]["path"][1]] = (
-                                observable_value
-                            )
+                            hashes[
+                                OPENCTI_STIX2[observable_resolver]["path"][1]
+                            ] = observable_value
                             observable = stix2.File(
                                 name=file_name,
                                 hashes=hashes,

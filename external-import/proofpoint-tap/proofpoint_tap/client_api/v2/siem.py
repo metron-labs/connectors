@@ -98,13 +98,13 @@ class ThreatInfo(ResponseModel):
     threat_time: AwareDatetime = Field(
         ..., alias="threatTime", description="Time the threat was identified."
     )
-    threat_type: PermissiveLiteral[Literal["attachment", "message", "messagetext"]] = (
-        Field(
-            ...,
-            alias="threatType",
-            description="Type of the threat.\
+    threat_type: PermissiveLiteral[
+        Literal["attachment", "message", "messagetext"]
+    ] = Field(
+        ...,
+        alias="threatType",
+        description="Type of the threat.\
             Note: The documentation specifies Message but the API response is MessageText.",
-        )
     )
     threat_url: Optional[str] = Field(
         None,

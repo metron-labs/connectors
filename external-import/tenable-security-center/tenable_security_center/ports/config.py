@@ -56,7 +56,8 @@ class ConfigLoaderOCTIPort(ConfigBaseLoader):
 
     @property
     @abstractmethod
-    def _url(self) -> str: ...
+    def _url(self) -> str:
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve OpenCTI URL in config")
@@ -66,7 +67,8 @@ class ConfigLoaderOCTIPort(ConfigBaseLoader):
 
     @property
     @abstractmethod
-    def _token(self) -> str: ...
+    def _token(self) -> str:
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve OpenCTI Token in config")
@@ -80,7 +82,8 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _id(self) -> str: ...
+    def _id(self) -> str:
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve connector ID in config")
@@ -90,17 +93,22 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _type(self) -> Literal[
+    def _type(
+        self,
+    ) -> Literal[
         "EXTERNAL_IMPORT",
         "INTERNAL_ENRICHMENT",
         "INTERNAL_EXPORT_FILE",
         "INTERNAL_IMPORT_FILE",
         "STREAM",
-    ]: ...
+    ]:
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve connector type in config")
-    def type(self) -> Literal[
+    def type(
+        self,
+    ) -> Literal[
         "EXTERNAL_IMPORT",
         "INTERNAL_ENRICHMENT",
         "INTERNAL_EXPORT_FILE",
@@ -112,7 +120,8 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _name(self) -> str: ...
+    def _name(self) -> str:
+        ...
 
     @_make_error_handler("Unable to retrieve connector name in config")
     def name(self) -> str:
@@ -121,7 +130,8 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _scope(self) -> str: ...
+    def _scope(self) -> str:
+        ...
 
     @_make_error_handler("Unable to retrieve connector scope in config")
     def scope(self) -> str:
@@ -130,7 +140,8 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _log_level(self) -> Literal["debug", "info", "warn", "error"]: ...
+    def _log_level(self) -> Literal["debug", "info", "warn", "error"]:
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve connector log level in config")
@@ -140,7 +151,8 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _duration_period(self) -> "datetime.timedelta": ...
+    def _duration_period(self) -> "datetime.timedelta":
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve connector duration period in config")
@@ -150,7 +162,8 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _queue_threshold(self) -> Optional[int]: ...
+    def _queue_threshold(self) -> Optional[int]:
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve connector queue threshold in config")
@@ -160,7 +173,8 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _run_and_terminate(self) -> Optional[bool]: ...
+    def _run_and_terminate(self) -> Optional[bool]:
+        ...
 
     @property
     @_make_error_handler(
@@ -172,7 +186,8 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _send_to_queue(self) -> Optional[bool]: ...
+    def _send_to_queue(self) -> Optional[bool]:
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve connector send-to-queue flag in config")
@@ -182,7 +197,8 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _send_to_directory(self) -> Optional[bool]: ...
+    def _send_to_directory(self) -> Optional[bool]:
+        ...
 
     @property
     @_make_error_handler(
@@ -194,7 +210,8 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _send_to_directory_path(self) -> Optional[str]: ...
+    def _send_to_directory_path(self) -> Optional[str]:
+        ...
 
     @property
     @_make_error_handler(
@@ -210,7 +227,8 @@ class ConfigLoaderConnectorPort(ABC):
 
     @property
     @abstractmethod
-    def _send_to_directory_retention(self) -> Optional[int]: ...
+    def _send_to_directory_retention(self) -> Optional[int]:
+        ...
 
     @property
     @_make_error_handler(
@@ -230,7 +248,8 @@ class ConfigLoaderTSCPort(ABC):
 
     @property
     @abstractmethod
-    def _num_threads(self) -> Optional[int]: ...
+    def _num_threads(self) -> Optional[int]:
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve number of threads in config")
@@ -240,7 +259,8 @@ class ConfigLoaderTSCPort(ABC):
 
     @property
     @abstractmethod
-    def _api_base_url(self) -> str: ...
+    def _api_base_url(self) -> str:
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve TSC API base URL in config")
@@ -250,7 +270,8 @@ class ConfigLoaderTSCPort(ABC):
 
     @property
     @abstractmethod
-    def _api_access_key(self) -> str: ...
+    def _api_access_key(self) -> str:
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve TSC API access key in config")
@@ -260,7 +281,8 @@ class ConfigLoaderTSCPort(ABC):
 
     @property
     @abstractmethod
-    def _api_secret_key(self) -> str: ...
+    def _api_secret_key(self) -> str:
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve TSC API secret key in config")
@@ -270,7 +292,8 @@ class ConfigLoaderTSCPort(ABC):
 
     @property
     @abstractmethod
-    def _api_timeout(self) -> Optional[int]: ...
+    def _api_timeout(self) -> Optional[int]:
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve TSC API timeout in config")
@@ -280,7 +303,8 @@ class ConfigLoaderTSCPort(ABC):
 
     @property
     @abstractmethod
-    def _api_backoff(self) -> Optional[int]: ...
+    def _api_backoff(self) -> Optional[int]:
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve TSC API backoff duration in config")
@@ -290,7 +314,8 @@ class ConfigLoaderTSCPort(ABC):
 
     @property
     @abstractmethod
-    def _api_retries(self) -> Optional[int]: ...
+    def _api_retries(self) -> Optional[int]:
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve TSC API retry count in config")
@@ -300,7 +325,8 @@ class ConfigLoaderTSCPort(ABC):
 
     @property
     @abstractmethod
-    def _export_since(self) -> "datetime.datetime": ...
+    def _export_since(self) -> "datetime.datetime":
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve export since datetime in config")
@@ -312,7 +338,8 @@ class ConfigLoaderTSCPort(ABC):
     @abstractmethod
     def _severity_min_level(
         self,
-    ) -> Literal["info", "low", "medium", "high", "critical"]: ...
+    ) -> Literal["info", "low", "medium", "high", "critical"]:
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve minimum severity level in config")
@@ -324,7 +351,8 @@ class ConfigLoaderTSCPort(ABC):
 
     @property
     @abstractmethod
-    def _marking_definition(self) -> "TLPMarking": ...
+    def _marking_definition(self) -> "TLPMarking":
+        ...
 
     @property
     @_make_error_handler("Unable to retrieve marking definition in config")
@@ -334,7 +362,8 @@ class ConfigLoaderTSCPort(ABC):
 
     @property
     @abstractmethod
-    def _process_systems_without_vulnerabilities(self) -> bool: ...
+    def _process_systems_without_vulnerabilities(self) -> bool:
+        ...
 
     @property
     @_make_error_handler(

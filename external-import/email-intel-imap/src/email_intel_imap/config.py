@@ -34,11 +34,11 @@ class _ConnectorConfig(ConnectorConfig):
 
 
 class _EmailIntelConfig(BaseModel):
-    tlp_level: Literal["white", "clear", "green", "amber", "amber+strict", "red"] = (
-        Field(
-            default="amber+strict",
-            description="Traffic Light Protocol (TLP) level to apply on objects imported into OpenCTI.",
-        )
+    tlp_level: Literal[
+        "white", "clear", "green", "amber", "amber+strict", "red"
+    ] = Field(
+        default="amber+strict",
+        description="Traffic Light Protocol (TLP) level to apply on objects imported into OpenCTI.",
     )
     relative_import_start_date: datetime.timedelta = Field(
         default=datetime.timedelta(days=30),

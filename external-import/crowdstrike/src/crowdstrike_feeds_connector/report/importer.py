@@ -84,9 +84,9 @@ class ReportImporter(BaseImporter):
                     latest_report_modified_datetime
                 )
 
-                new_state[self._LATEST_REPORT_TIMESTAMP] = (
-                    latest_report_modified_timestamp
-                )
+                new_state[
+                    self._LATEST_REPORT_TIMESTAMP
+                ] = latest_report_modified_timestamp
                 self._set_state(new_state)
 
         latest_report_timestamp = latest_report_modified_timestamp or fetch_timestamp

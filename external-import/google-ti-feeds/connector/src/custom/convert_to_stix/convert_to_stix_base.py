@@ -3,12 +3,8 @@
 import logging
 from typing import Any, Literal, cast
 
-from connector.src.custom.configs import (
-    GTIConfig,
-)
-from connector.src.custom.configs.converter_config import (
-    CONVERTER_CONFIGS,
-)
+from connector.src.custom.configs import GTIConfig
+from connector.src.custom.configs.converter_config import CONVERTER_CONFIGS
 from connector.src.utils.converters import GenericConverterFactory
 from connectors_sdk.models.octi import (  # type: ignore[import-untyped]
     OrganizationAuthor,
@@ -142,15 +138,15 @@ class BaseConvertToSTIX:
                 if entity_type == "malware_families" and hasattr(
                     self.config, "enable_malware_aliases"
                 ):
-                    additional_deps["enable_malware_aliases"] = (
-                        self.config.enable_malware_aliases
-                    )
+                    additional_deps[
+                        "enable_malware_aliases"
+                    ] = self.config.enable_malware_aliases
                 elif entity_type == "threat_actors" and hasattr(
                     self.config, "enable_threat_actor_aliases"
                 ):
-                    additional_deps["enable_threat_actor_aliases"] = (
-                        self.config.enable_threat_actor_aliases
-                    )
+                    additional_deps[
+                        "enable_threat_actor_aliases"
+                    ] = self.config.enable_threat_actor_aliases
 
                 converter = self.converter_factory.create_converter_by_name(
                     f"{_prefix}{entity_type}", additional_dependencies=additional_deps

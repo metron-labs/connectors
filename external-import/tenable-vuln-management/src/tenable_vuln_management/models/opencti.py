@@ -177,7 +177,8 @@ class Observable(BaseEntity):
     )
 
     @abstractmethod
-    def to_stix2_object(self) -> Any: ...
+    def to_stix2_object(self) -> Any:
+        ...
 
 
 class MACAddress(Observable):
@@ -465,7 +466,8 @@ class BaseRelationship(BaseEntity):
     )
 
     @abstractmethod
-    def to_stix2_object(self) -> Any: ...
+    def to_stix2_object(self) -> Any:
+        ...
 
     def _common_stix2_args(self) -> dict[str, Any]:
         return {

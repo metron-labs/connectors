@@ -268,13 +268,13 @@ class Eset:
                             if atomic_match:
                                 pattern_field_name = atomic_match.group(1)
                                 if pattern_field_name in OBSERVABLE_TYPES_MAP:
-                                    object["x_opencti_main_observable_type"] = (
-                                        OBSERVABLE_TYPES_MAP[pattern_field_name]
-                                    )
+                                    object[
+                                        "x_opencti_main_observable_type"
+                                    ] = OBSERVABLE_TYPES_MAP[pattern_field_name]
                             if self.eset_create_observables:
-                                object["x_opencti_create_observables"] = (
-                                    self.eset_create_observables
-                                )
+                                object[
+                                    "x_opencti_create_observables"
+                                ] = self.eset_create_observables
                         object["where_sighted_refs"] = []
                         objects.append(object)
                     parsed_content["objects"] = objects

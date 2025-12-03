@@ -3,9 +3,7 @@
 import logging
 from typing import Any
 
-from connector.src.custom.configs import (
-    GTIConfig,
-)
+from connector.src.custom.configs import GTIConfig
 from connector.src.custom.convert_to_stix.convert_to_stix_base import BaseConvertToSTIX
 
 LOG_PREFIX = "[ConvertToSTIXThreatActor]"
@@ -31,9 +29,9 @@ class ConvertToSTIXThreatActor(BaseConvertToSTIX):
         try:
             additional_deps = {}
             if hasattr(self.config, "enable_threat_actor_aliases"):
-                additional_deps["enable_threat_actor_aliases"] = (
-                    self.config.enable_threat_actor_aliases
-                )
+                additional_deps[
+                    "enable_threat_actor_aliases"
+                ] = self.config.enable_threat_actor_aliases
 
             converter = self.converter_factory.create_converter_by_name(
                 "threat_actor", additional_dependencies=additional_deps

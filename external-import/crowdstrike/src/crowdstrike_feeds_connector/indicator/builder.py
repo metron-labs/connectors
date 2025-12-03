@@ -34,10 +34,7 @@ from crowdstrike_feeds_services.utils import (
     timestamp_to_datetime,
 )
 from pycti import OpenCTIConnectorHelper
-from stix2 import (
-    Bundle,
-    Identity,
-)
+from stix2 import Bundle, Identity
 from stix2 import Indicator as STIXIndicator  # type: ignore
 from stix2 import (
     IntrusionSet,
