@@ -142,7 +142,9 @@ def build_custom_properties(alert, author_id) -> dict:
 
     if alert.get("product") == "telco":
         custom_properties["x_opencti_labels"] = build_labels(alert)
-        custom_properties["x_opencti_external_references"] = build_external_references(alert)
+        custom_properties["x_opencti_external_references"] = build_external_references(
+            alert
+        )
 
     x_opencti_description = build_description(alert)
     if x_opencti_description:
