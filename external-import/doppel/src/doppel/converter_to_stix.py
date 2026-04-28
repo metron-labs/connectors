@@ -11,15 +11,15 @@ from doppel.stix_helpers import (
     is_takedown_state,
 )
 from doppel.utils import parse_iso_datetime
-from pycti import Grouping as PyctiGrouping
-from pycti import Identity as PyctiIdentity
-from pycti import Indicator as PyctiIndicator
-from pycti import MarkingDefinition as PyctiMarkingDefinition
-from pycti import Note as PyctiNote
 from pycti import (
     OpenCTIConnectorHelper,
+    CaseRft as PyctiCaseRft,
+    Identity as PyctiIdentity,
+    Indicator as PyctiIndicator,
+    MarkingDefinition as PyctiMarkingDefinition,
+    Note as PyctiNote,
+    StixCoreRelationship as PyctiStixCoreRelationship,
 )
-from pycti import StixCoreRelationship as PyctiStixCoreRelationship
 from pycti.utils.constants import CustomObservablePhoneNumber as PhoneNumber
 from stix2 import (
     TLP_AMBER,
@@ -27,16 +27,12 @@ from stix2 import (
     TLP_RED,
     TLP_WHITE,
     DomainName,
-    Grouping,
     Identity,
     Indicator,
     IPv4Address,
 )
 from stix2 import MarkingDefinition as Stix2MarkingDefinition
-from stix2 import (
-    Note,
-)
-from stix2 import Relationship as Stix2Relationship
+from stix2 import Note, Relationship as Stix2Relationship
 
 
 class ConverterToStix:
@@ -102,7 +98,6 @@ class ConverterToStix:
         Create PhoneNumber object
         """
         custom_properties = build_custom_properties(alert, self.author.id)
-
         return PhoneNumber(
             value=phone_number,
             object_marking_refs=[self.tlp_marking.id],
@@ -143,29 +138,25 @@ class ConverterToStix:
             allow_custom=True,
         )
 
-    def create_grouping_case(self, alert: dict, object_refs: list) -> Grouping:
+    def create_case_rft(self, alert: dict, object_refs: list) -> dict:
         """
-        Create Grouping case object
+        Create Request for Takedown case
         """
-        priority = calculate_priority(alert["score"])
-        grouping_name = f"Case for Alert {alert['id']}"
-        case_labels = build_labels(alert)
-        case_labels.append(f"priority:{priority}")
+        priority = calculate_priority(alert.get("score", 0))
+        case_name = f"Doppel Takedown - {alert.get('entity', 'Unknown')} ({alert.get('id')})"
 
-        return Grouping(
-            id=PyctiGrouping.generate_id(
-                name=grouping_name, context="suspicious-activity"
-            ),
-            name=grouping_name,
-            context="suspicious-activity",
-            object_refs=object_refs,
-            created_by_ref=self.author.id,
-            external_references=build_external_references(alert),
-            description=build_description(alert),
-            labels=case_labels,
-            object_marking_refs=[self.tlp_marking.id],
-            allow_custom=True,
-        )
+        return {
+            "id": PyctiCaseRft.generate_id(name=case_name),
+            "name": case_name,
+            "description": build_description(alert),
+            "priority": priority,               
+            "severity": alert.get('severity'),
+            "labels": build_labels(alert) + [f"priority:{priority}", "doppel", "takedown"],
+            "object_refs": object_refs,
+            "created_by_ref": self.author.id,
+            "object_marking_refs": [self.tlp_marking.id],
+            "allow_custom": True,
+        }
 
     def create_relationship(
         self, source_id: str, target_id: str, relationship_type: str
