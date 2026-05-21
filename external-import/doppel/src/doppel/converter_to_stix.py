@@ -27,6 +27,7 @@ from stix2 import (
     TLP_RED,
     TLP_WHITE,
     DomainName,
+    URL,
     Grouping,
     Identity,
     Indicator,
@@ -376,11 +377,11 @@ class ConverterToStix:
 
     def _create_observable(self, obs_type: str, observable_value: str, alert: dict):
         """
-        Generic method to create STIX Cyber Observables (PhoneNumber, DomainName, IPv4Address).
+        Generic method to create STIX Cyber Observables (PhoneNumber, DomainName, IPv4Address, URL).
         """
         priority = calculate_priority(alert.get("score", 0))
         # Map types to their respective classes
-        type_map = {"phone": PhoneNumber, "domain": DomainName, "ipv4": IPv4Address}
+        type_map = {"phone": PhoneNumber, "domain": DomainName, "ipv4": IPv4Address, "url": URL}
 
         observable_class = type_map.get(obs_type)
 
@@ -522,6 +523,11 @@ class ConverterToStix:
                     ipv4_observable = self._create_observable("ipv4", ip_address, alert)
                     stix_objects.append(ipv4_observable)
                     observables.append(ipv4_observable)
+            elif product_type == "darkweb":
+                url = alert.get("entity")
+                url_observable = self._create_observable("url", url, alert)
+                stix_objects.append(url_observable)
+                observables.append(url_observable)
             # We may consider to change this in future.
             elif product_type in DOPPEL_ALERT_TYPES_EXCEPT_DOMAIN_AND_TELCO:
                 domain = alert.get("entity")
@@ -750,6 +756,16 @@ class ConverterToStix:
 
                 stix_objects.append(ipv4_indicator)
                 indicators.append(ipv4_indicator)
+        elif product_type == "darkweb":
+            pattern = f"[url:value = '{entity_value}']"
+            name = entity_value
+
+            url_indicator = self._create_indicator(
+                alert, pattern, name, created_at, modified_at
+            )
+
+            stix_objects.append(url_indicator)
+            indicators.append(url_indicator)
         elif product_type in DOPPEL_ALERT_TYPES_EXCEPT_DOMAIN_AND_TELCO:
             pattern = f"[domain-name:value = '{entity_value}']"
             name = entity_value
