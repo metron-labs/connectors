@@ -6,13 +6,10 @@ RETRYABLE_REQUEST_ERRORS = (
 )
 
 DOPPEL_ALERT_TYPES_EXCEPT_DOMAIN_AND_TELCO = [
-    # 'domains',
-    # 'telco',
     "social_media",
     "mobile_apps",
     "ecommerce",
     "crypto",
     "email",
     "paid_ads",
-    "darkweb",
 ]
